@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Edit Quizzes{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h3>Click on a quiz to {{ action }}</h3>
+    </div>
+    <div class="container">
+
+        <table class ="table table-bordered table-hover" id="view-quizzes">
+            <thead class="thead-light">
+                <th scope="col">Quiz Name (Unique)</th>
+                <th scope="col">Course</th>
+                <th scope="col">Description</th>
+                <th scope="col">Results send to</th>
+                <th scope="col">Action</th>
+            </thead>
+            <tbody>
+                {% for quiz in quizzes %}
+                    <tr>
+                        <th scope="row">{{ quiz.quiz_name }}</th>
+                        <th>{{ quiz.course }}</th>
+                        <th>{{ quiz.description }}</th>
+                        <th>{{ quiz.account }}</th>
+                        <th>
+                            <form method="POST" action="./action_editquiz" style="display:inline">
+                                <input type="hidden" value="{{ quiz.quiz_name }}" name="edit_quizname">
+                                <input type="hidden" value="{{ quiz.course }}" name="edit_course">
+                                <input type="hidden" value="{{ quiz.description }}" name="edit_description">
+                                <input type="hidden" value="{{ quiz.account }}" name="edit_account">
+                                <input type="submit" value="Edit Questions">
+                            </form>
+                            <form method="POST" action="./action_editquizdetails" style="display:inline">
+                                <input type="hidden" value="{{ quiz.quiz_name }}" name="det_quizname">
+                                <input type="hidden" value="{{ quiz.course }}" name="det_course">
+                                <input type="hidden" value="{{ quiz.description }}" name="det_description">
+                                <input type="hidden" value="{{ quiz.account }}" name="det_account">
+                                <input type="submit" value="Edit Key">
+                            </form>
+                            <form method="POST" action="./action_deletequiz" style="display:inline">
+                                <input type="hidden" value="{{ quiz.quiz_name }}" name="del_quizname">
+                                <input type="submit" value="Delete">
+                            </form>
+                            
+                        </th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        
+
+
+    
+
+    
+    </div>
+    
+{% endblock %}

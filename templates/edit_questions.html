@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Edit Quiz{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h3>You are editing Quiz <b><i>{{ topic }}</b></i> in Course <b><i>{{ course }}</i></b></h3> 
+    </div>
+    <div class="container">
+        <br>
+        <form method='POST' action='./action_addmorequestions'>
+            <input type="hidden" value="{{que.course}}" name="add_course">
+            <input type="hidden" value="{{que.quiz_name}}" name="add_quizname">
+            <input type="hidden" value="{{que.description}}" name="add_description">
+            <input type="hidden" value="{{que.account}}" name="add_account">
+            <input type="submit" value="Add More Questions">
+
+        </form>
+        <br> <hr>
+        
+
+        <form method="POST" action="./action_editquestion">
+        {% set count = namespace(value=1) %}
+        {% for question in questions %}
+        
+        <input type="hidden" value="{{ question.qid }}" name='form_qid_{{count.value}}'>
+            
+
+            <div class="form-group">
+                <div class="row">
+                    
+                   <div class="col-sm-6">Question:<br><textarea class = "form-control" type="text" value="{{ question.question }}" rows="16" cols="75" name='form_question_{{count.value}}'>{{ question.question }} </textarea></div>
+                   <div class="col-sm-6">
+                    Choice A: <input type="text" autocomplete="off" class="form-control" value="{{ question.choice_a }}" name='form_a_{{count.value}}'><br>
+                    Choice B: <input type="text" autocomplete="off" class="form-control" value="{{ question.choice_b }}" name='form_b_{{count.value}}'><br>
+                    Choice C: <input type="text" autocomplete="off" class="form-control" value="{{ question.choice_c }}" name='form_c_{{count.value}}'><br>
+                    Choice D: <input type="text" autocomplete="off" class="form-control" value="{{ question.choice_d }}" name='form_d_{{count.value}}'><br>
+                    Choice E: <input type="text" autocomplete="off" class="form-control" value="{{ question.choice_e }}" name='form_e_{{count.value}}'><br>
+                    
+                </div>
+                </div><!--end row of question and column of answers-->
+                  <br>
+                   <b>Correct Answer</b> 
+                   <input type="text" value="{{ question.answer}}" name='form_answer_{{count.value}}'><br><br>
+                   Delete: <input type="checkbox" name='form_delete_{{count.value}}'><br><br>
+                                 
+                {% set count.value=count.value+1 %}
+        
+            <br><hr><br>
+
+        {% endfor %}
+        <input type="hidden" value="{{count.value}}" name="tot_qs">
+        <input type="submit" value="Update">
+        </form>
+        </div>
+
+    </div>
+{% endblock %}

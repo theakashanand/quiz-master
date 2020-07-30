@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}New Question{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        
+        <h3>Add a new question to Quiz <b><i>{{ topic }}</b></i> in Course <b><i>{{ course }}</i></b></h3>
+
+    </div>
+    <div class="container">       
+
+       <form method='POST' action="./action_newquestion "> 
+
+        <div>
+           
+            <input type="hidden" value='{{ course }}' name='form_course'>
+            <input type="hidden" value='{{ topic }}' name='form_quizname'>
+            <input type="hidden" value='{{ description }}' name='form_description'>
+            <input type="hidden" value='{{ account }}' name = 'form_account'>
+            
+        </div>
+        <br>
+        <div class="form-group">
+        <div class="row">
+            
+           <div class="col-sm-6">Question: <br><textarea class="form-control" rows="16" cols="75" name='form_question'></textarea></div>
+           <div class="col-sm-6">
+            Choice A: <input type="text" class = "form-control" autocomplete ="off" name='form_a'><br>
+            Choice B: <input type="text" class = "form-control" autocomplete ="off" name='form_b'><br>
+            Choice C: <input type="text" class = "form-control" autocomplete ="off" name='form_c'><br>
+            Choice D: <input type="text" class = "form-control" autocomplete ="off" name='form_d'><br>
+            Choice E: <input type="text" class = "form-control" autocomplete ="off" name='form_e'><br>
+        </div>
+        </div><!--end row of question and column of answers-->
+          <br>
+           <b>Correct Answer</b> <br>
+           <input type="radio" name="form_answer" value="a">
+                    <label for="a">A</label>
+                    <input type="radio" name="form_answer" value="b">
+                    <label for="a">B</label>
+                    <input type="radio" name="form_answer" value="c">
+                    <label for="a">C</label>
+                    <input type="radio" name="form_answer" value="d">
+                    <label for="a">D</label>
+                    <input type="radio" name="form_answer" value="e">
+                    <label for="a">E</label>
+                    <br><br>
+
+           <input type="submit" value="Submit"><br><br>
+           Quiz gets saved automatically. To exit Add mode, click Home on top.
+
+        </div>
+       </form>
+
+    </div><!--end container-->
+{% endblock %}

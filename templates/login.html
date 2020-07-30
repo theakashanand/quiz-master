@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Quiz Master Login{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h3>Administrator Login</h3>
+    </div>
+    <div class="container">
+        <form method='POST' action='./action_login'>
+            Username: <input type="text" class="form-control" autocomplete="off" name="username" ><br>
+            Password: <input type="password" class="form-control" autocomplete="off" name="pass"><br>
+            
+            <input type="submit" class = "button" value="Login">
+        </form>
+
+    </div>
+{% endblock %}

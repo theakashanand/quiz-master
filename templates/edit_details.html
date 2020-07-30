@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Edit Quiz Details{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h3>You are editing Quiz <b><i>{{ topic }}</b></i> in Course <b><i>{{ course }}</i></b></h3> 
+    </div>
+    <div class="container">
+        <br>
+        <form method='POST' action='./action_update_details'>
+            Quiz Name:<br> <input type="text"  class="form-control" value="{{quiz_name}}" name="updet_quizname"><br>
+            Course: <br><input type="text" class="form-control" value="{{course}}" name="updet_course"><br>
+            Description:<br> <input type="text"  class="form-control" value="{{description}}" name="updet_description"><br>
+            Account: <br><input type="text"  class="form-control" value="{{account}}" name="updet_account"><br>
+            <input type="submit" value="Update">
+
+        </form>
+        <br> <hr>
+        
+       
+
+                </div>
+
+            
+        
+            <br><hr><br>
+
+    </div>
+{% endblock %}

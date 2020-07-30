@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}New Quiz{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h3>Create a new quiz</h3>
+    </div>
+    <div class="container">
+        <form method='POST' action='./action_newquiz'>
+            Quiz Name: <input type="text" class="form-control" autocomplete="off" name="form_quizname">
+            Please note, each quiz must have a unique name.<br><br>
+            Course: <input type="text" class="form-control" autocomplete="off" name="form_course" ><br>
+            Description: <input type="text" class="form-control" autocomplete="off" name="form_description"><br>
+            Admin Email-ID:  <input type="email" class="form-control" name="form_account">
+            Results for this quiz will be submitted to this email<br><br>
+            <input type="submit" class = "button" value="Next">
+        </form>
+
+    </div>
+{% endblock %}
