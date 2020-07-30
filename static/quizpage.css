@@ -1,0 +1,48 @@
+h1
+{
+    color: green;
+}
+
+body{
+    padding: 40px;;
+}
+
+a
+{
+  color:black;
+  width: 10px;
+}
+
+.carousel-item
+{
+  text-align: left;
+  padding-left: 250px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 50px;
+  width: 50px;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius: 30%;
+  border: 1px solid black;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  text-align:center;
+  content: '>';
+  font-size: 30px;
+  color: black;
+}
+
+.carousel-control-prev-icon:after {
+  text-align:center;
+  content: '<';
+  font-size: 30px;
+  color: black;
+}
+
+
