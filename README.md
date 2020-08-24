@@ -12,6 +12,17 @@ The source code for Intellitrak's Quiz Master web-application. Quiz Master is an
 Instructors with admin accounts on the site can create and upload quizzes onto the site, which students may attempt. Student's responses and final scores are shared to the email address of the instructor who created the quiz, so that their performance can be analysed.
 </p>
 
+## Screenshots
+
+<p align="center">
+  <img alt="Home" src="https://github.com/theakashanand/quiz-master/blob/master/docs/assets/screenshots/home.png" width=800/>
+</p>
+
+<p align="center">
+  <img alt="Quiz" src="https://github.com/theakashanand/quiz-master/blob/master/docs/assets/screenshots/attempt.png" width=800/>
+</p>
+
+
 ## What's new?
 
 #### v1.0.0
